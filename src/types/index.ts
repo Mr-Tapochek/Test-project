@@ -1,10 +1,10 @@
 export interface Painting {
-    authorId: number;
-    created: string;
-    id: number;
-    imgUrl: string;
-    locationId: number;
-    name: string;
+  authorId: number;
+  created: string;
+  id: number;
+  imgUrl: string;
+  locationId: number;
+  name: string;
 }
 
 export interface Author {

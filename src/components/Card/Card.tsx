@@ -13,8 +13,11 @@ export const Card: React.FC<ArtCardProps> = ({ painting }) => {
         <img src={painting.imgUrl} alt="img" className={styles.image} />
       </div>
       <div className={styles.content}>
-        <p className={styles.imgName}>{painting.name}</p>
-        <p className={styles.date}>{painting.created}</p>
+        <div className={styles.line} />
+        <div className={styles.info}>
+          <p className={styles.title}>{painting.name}</p>
+          <p className={styles.created}>{painting.created}</p>
+        </div>
       </div>
     </div>
   );

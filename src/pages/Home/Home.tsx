@@ -47,34 +47,11 @@ const MOCK_PAINTINGS: Painting[] = [
   {
     id: 6,
     name: 'Закат над морем',
-    imgUrl: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Google_Photos.max-1000x1000.jpg',
+    imgUrl:
+      'https://img.freepik.com/premium-photo/fantastic-colorful-sunset-wavy-waters-summer-day_245047-525.jpg?semt=ais_hybrid&w=740&q=80',
     authorId: 6,
     locationId: 5,
     created: '2017',
-  },
-  {
-    id: 7,
-    name: 'Японский сад',
-    imgUrl: 'https://lh3.googleusercontent.com/proxy/CYS9njbcTvV2Px3IuD57UuqE6k7y-s4NscO9TLVgchmB3COQJY0CwRa1UE8vUgfeuWw9Sjm10AgbC2M5MeG0w1u6qJzWMA9T7_fZwr-YJQ',
-    authorId: 1,
-    locationId: 2,
-    created: '2021',
-  },
-  {
-    id: 8,
-    name: 'Горное озеро',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Alpsee_hohenschwangau_2012.jpg/400px-Alpsee_hohenschwangau_2012.jpg',
-    authorId: 2,
-    locationId: 3,
-    created: '2019',
-  },
-  {
-    id: 9,
-    name: 'Ночной город',
-    imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Tokyo_%28Wikimedia_Commons%29.jpg/400px-Tokyo_%28Wikimedia_Commons%29.jpg',
-    authorId: 3,
-    locationId: 4,
-    created: '2020',
   },
 ];
 
@@ -117,8 +94,10 @@ export const Home: React.FC = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Галерея искусств</h1>
-        <p className={styles.subtitle}>Коллекция из {paintings.length} произведений</p>
+        <div className={styles.headerCont}>
+          <img src="/light-logo.svg" alt="logo" className={styles.leftImg}/>
+          <img src="/light-switch.svg" alt="switch" className={styles.rightImg}/>
+        </div>
       </header>
 
       <main className={styles.main}>
