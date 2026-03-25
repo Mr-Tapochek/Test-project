@@ -1,5 +1,5 @@
 .card {
-  background: #fff;
+  background: $primary-color;
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,6 @@
   width: 100%;
   aspect-ratio: 16/10;
   overflow: hidden;
-  background: #f0f0f0;
 }
 
 .image {
@@ -31,7 +30,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background: white;
+  background: $primary-color;
   display: flex;
 
   &::after {
@@ -41,13 +40,13 @@
     top: 0;
     width: 25px;
     height: 100%;
-    background: rgb(138, 50, 50);
+    background: $accent-color;
     display: none;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     font-weight: bold;
-    color: #fff;
+    color: $primary-color;
     transition: all 0.3s ease;
     cursor: pointer;
   }
@@ -62,24 +61,26 @@
 .line {
   width: 3px;
   height: 42px;
-  background: #b8860b;
+  background: $accent-color;
 }
 
 .title {
   font-size: 16px;
   font-weight: 500;
-  color: #333;
+  color: $text-color;
   line-height: 1.4;
+  font-family: $font-title;
 }
 
 .created {
   font-size: 12px;
   font-weight: bold;
-  color: rgb(117, 36, 36);
+  font-family: $font-base;
+  color: $accent-color;
 }
 
 button {
-  background: rgb(117, 36, 36);
+  background: $accent-color;
   align-items: center;
   border: none;
 }

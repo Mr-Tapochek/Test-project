@@ -1,0 +1,21 @@
+@import './fonts.scss';
+@import './themes.scss';
+
+$font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+$font-title: 'Cormorant SC';
+
+$primary-color: var(--color-primary);
+$text-color: var(--color-text);
+$primary-light-gray: var(--primary-light-gray);
+$primary-dark-gray: var(--primary-dark-gray);
+
+$input-bc:var(--input-bc);
+$input-border:var(--input-border);
+$input-border-focus:var(--input-border-focus);
+$input-placeholder:var(--input-placeholder);
+
+$secondary-white: var(--secondary-white);
+$secondary-black: var(--secondary-black);
+$secondary-gray: var(--secondary-gray);
+
+$accent-color: var(--color-accent);
