@@ -1,77 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '@/components/Card/Card';
-import { Painting } from '@/types';
 import { useAppDispatch, useAppSelector } from '@/types/hooks';
 import { toggleTheme } from '@/types/themeSlice';
+import { getPaintingsWithDetails, PaintingsWithDetails } from '@/types/index';
 import styles from './Home.module.scss';
 
-const MOCK_PAINTINGS: Painting[] = [
-  {
-    id: 1,
-    name: 'Red Bicycle',
-    imgUrl: 'https://www.gstatic.com/webp/gallery/1.jpg',
-    authorId: 1,
-    locationId: 1,
-    created: '2020',
-  },
-  {
-    id: 2,
-    name: 'Butterfly on a Flower',
-    imgUrl: 'https://www.gstatic.com/webp/gallery/2.jpg',
-    authorId: 2,
-    locationId: 2,
-    created: '2019',
-  },
-  {
-    id: 3,
-    name: 'Mountain River',
-    imgUrl: 'https://www.gstatic.com/webp/gallery/3.jpg',
-    authorId: 3,
-    locationId: 3,
-    created: '2021',
-  },
-  {
-    id: 4,
-    name: 'Hot Air Balloons',
-    imgUrl: 'https://www.gstatic.com/webp/gallery/4.jpg',
-    authorId: 4,
-    locationId: 4,
-    created: '2018',
-  },
-  {
-    id: 5,
-    name: 'Venice Canal',
-    imgUrl: 'https://www.gstatic.com/webp/gallery/5.jpg',
-    authorId: 5,
-    locationId: 1,
-    created: '2022',
-  },
-  {
-    id: 6,
-    name: 'Sunset Over the Sea',
-    imgUrl:
-      'https://img.freepik.com/premium-photo/fantastic-colorful-sunset-wavy-waters-summer-day_245047-525.jpg?semt=ais_hybrid&w=740&q=80',
-    authorId: 6,
-    locationId: 5,
-    created: '2017',
-  },
-];
+const ITEMS_PER_PAGE = 6;
 
 export const Home: React.FC = () => {
-  const [paintings, setPaintings] = useState<Painting[]>([]);
+  const [paintings, setPaintings] = useState<PaintingsWithDetails[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        setPaintings(MOCK_PAINTINGS);
-      } catch (error) {
-        console.error('Error fetching paintings:', error);
-      }
-    };
+    loadPaintings();
+  }, [currentPage]);
 
-    fetchData();
-  }, []);
+  const loadPaintings = async () => {
+    try {
+      const response = await getPaintingsWithDetails({
+        _page: currentPage,
+        _limit: ITEMS_PER_PAGE,
+      });
+
+      setPaintings(response.paintings);
+      setTotalCount(response.totalCount);
+    } catch (err) {
+      console.error('Ошибка загрузки:', err);
+    }
+  };
+
+  const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.theme);
@@ -120,6 +98,61 @@ export const Home: React.FC = () => {
             <Card key={painting.id} painting={painting} />
           ))}
         </div>
+        {totalPages > 1 && (
+          <>
+            <div className={styles.pagination}>
+              <button
+                onClick={goToPrevPage}
+                disabled={currentPage === 1}
+                className={styles.pageButton}
+              >
+                ← Назад
+              </button>
+
+              <div className={styles.pageNumbers}>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  if (
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => goToPage(page)}
+                        className={`${styles.pageNumber} ${
+                          currentPage === page ? styles.active : ''
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  }
+                  if (page === currentPage - 2 || page === currentPage + 2) {
+                    return (
+                      <span key={page} className={styles.dots}>
+                        ...
+                      </span>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages}
+                className={styles.pageButton}
+              >
+                Вперед →
+              </button>
+            </div>
+
+            <div className={styles.pageInfo}>
+              Страница {currentPage} из {totalPages}
+            </div>
+          </>
+        )}
       </main>
     </div>
   );
