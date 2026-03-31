@@ -12,7 +12,6 @@ if (savedTheme === 'dark') {
 } else if (savedTheme === 'light') {
   document.documentElement.removeAttribute('data-theme');
 } else {
-  // Проверяем системные настройки
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }

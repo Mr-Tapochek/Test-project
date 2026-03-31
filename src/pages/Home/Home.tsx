@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Card } from '@/components/Card/Card';
 import { useAppDispatch, useAppSelector } from '@/types/hooks';
 import { toggleTheme } from '@/types/themeSlice';
-import { getPaintingsWithDetails, PaintingsWithDetails } from '@/types/index';
+import { PaintingsWithDetails } from '@/types';
+import { getPaintingsWithDetails } from '@/services/api';
 import styles from './Home.module.scss';
 
 const ITEMS_PER_PAGE = 6;
@@ -106,7 +107,7 @@ export const Home: React.FC = () => {
                 disabled={currentPage === 1}
                 className={styles.pageButton}
               >
-                ← Назад
+                {'<'}
               </button>
 
               <div className={styles.pageNumbers}>
@@ -144,12 +145,8 @@ export const Home: React.FC = () => {
                 disabled={currentPage === totalPages}
                 className={styles.pageButton}
               >
-                Вперед →
+                {'>'}
               </button>
-            </div>
-
-            <div className={styles.pageInfo}>
-              Страница {currentPage} из {totalPages}
             </div>
           </>
         )}

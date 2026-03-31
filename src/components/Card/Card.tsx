@@ -7,7 +7,6 @@ export interface ArtCardProps {
 }
 
 export const Card: React.FC<ArtCardProps> = ({ painting }) => {
- console.log('Карточка:', painting);
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -16,8 +15,14 @@ export const Card: React.FC<ArtCardProps> = ({ painting }) => {
       <div className={styles.content}>
         <div className={styles.line} />
         <div className={styles.info}>
-          <p className={styles.title}>{painting.name}</p>
-          <p className={styles.created}>{painting.created}</p>
+          <div className={styles.defaultInfo}>
+            <p className={styles.title}>{painting.name}</p>
+            <p className={styles.created}>{painting.created}</p>
+          </div>
+          <div className={styles.hoverInfo}>
+            <p className={styles.title}>{painting.authorName}</p>
+            <p className={styles.created}>{painting.locationName}</p>
+          </div>
         </div>
       </div>
     </div>

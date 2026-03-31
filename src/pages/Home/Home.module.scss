@@ -77,6 +77,42 @@
   border: none;
 }
 
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+
+  * {
+    font-size: 16px;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 4px;
+}
+
+.pageButton {
+  background: none;
+  color: $pag-color;
+}
+
+.pageNumber {
+  color: $pag-color;
+  background: none;
+  padding: 2px 6px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.active {
+  background-color: $pag-init;
+  border-radius: 2px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
