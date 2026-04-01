@@ -5,6 +5,7 @@ import { toggleTheme } from '@/types/themeSlice';
 import { PaintingsWithDetails } from '@/types';
 import { getPaintingsWithDetails } from '@/services/api';
 import styles from './Home.module.scss';
+import SideMenu from '@/components/SideMenu/SideMenu';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -12,6 +13,7 @@ export const Home: React.FC = () => {
   const [paintings, setPaintings] = useState<PaintingsWithDetails[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     loadPaintings();
@@ -61,6 +63,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <SideMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <header className={styles.header}>
         <div className={styles.headerCont}>
           {theme === 'light' ? (
@@ -88,11 +91,13 @@ export const Home: React.FC = () => {
             )}
             <input type="text" className={styles.searchInput} placeholder="Placeholder" />
           </div>
-          {theme === 'light' ? (
-            <img src="/light-menu.svg" alt="menu" className={styles.menu} />
-          ) : (
-            <img src="/dark-menu.svg" alt="menu" className={styles.menu} />
-          )}
+          <button className={styles.toggle} onClick={() => setIsMenuOpen(true)}>
+            {theme === 'light' ? (
+              <img src="/light-menu.svg" alt="menu" className={styles.menu} />
+            ) : (
+              <img src="/dark-menu.svg" alt="menu" className={styles.menu} />
+            )}
+          </button>
         </div>
         <div className={styles.grid}>
           {paintings.map((painting) => (

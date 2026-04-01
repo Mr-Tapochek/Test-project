@@ -1,0 +1,202 @@
+.sideMenu {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 500px;
+    height: 100vh;
+    background: $menu-bc;
+    transition: right 0.3s ease;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    &.active {
+        right: 0;
+    }
+}
+
+.header {
+    padding: 24px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    .closeBtn {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: $pag-color;
+        transition: color 0.3s;
+    }
+}
+
+.content {
+    margin-top: 44px;
+    flex: 1;
+    padding: 24px;
+    max-width: 360px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1001;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.filterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    cursor: pointer;
+    user-select: none;
+
+    h3 {
+        font-size: 16px;
+        color: $text-color;
+        font-family: $font-title;
+        font-weight: 500;
+    }
+
+    .plusIcon {
+        font-size: 16px;
+        color: $pag-color;
+        transition: transform 0.3s;
+        font-weight: 300;
+    }
+}
+
+.filterContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    &.show {
+        max-height: 500px;
+    }
+}
+
+.selectOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.selectOption {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+
+    input {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+}
+
+.yearRange {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 200px;
+
+    .yearDash {
+        font-size: 14px;
+        color: $input-placeholder;
+    }
+}
+
+.yearInput {
+    flex: 1;
+
+    label {
+        display: block;
+        font-size: 14px;
+        color: $input-placeholder;
+        margin-bottom: 8px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $input-border;
+        background: $input-bc;
+        border-radius: 6px;
+        font-size: 14px;
+        text-align: center;
+
+        &:focus {
+            outline: none;
+            border-color: $input-border-focus;
+        }
+    }
+}
+
+.actionButtons {
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.showBtn {
+    padding: 0;
+    background: none;
+    color: $pag-color;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.clearBtn {
+    padding: 0;
+    background: none;
+    color: $input-placeholder;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $input-border;
+    border-radius: 6px;
+    font-size: 16px;
+    color: $input-placeholder;
+    background: $input-bc;
+    cursor: pointer;
+    margin-bottom: 8px;
+
+    &::-webkit-listbox {
+        max-width: 280px;
+    }
+
+    option {
+        max-width: 280px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 8px;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $input-border-focus;
+    }
+}
