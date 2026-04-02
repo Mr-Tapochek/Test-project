@@ -30,39 +30,56 @@
   animation: fadeIn 0.5s ease-out;
 }
 
-.search-box {
+.searchBox {
   position: relative;
-  width: 336px;
-}
+  display: flex;
+  width: 340px;
+  align-items: center;
+  
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px 32px 10px 36px;
+    border: 1px solid $input-border;
+    border-radius: 8px;
+    font-size: 14px;
+    background: $input-bc;
+    color: $input-border-focus;
+    caret-color: $input-border-focus;
+    
+    &:focus {
+      outline: none;
+      border-color: $input-border-focus;
+    }
 
-.search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
-}
-
-.search-input {
-  width: 100%;
-  padding: 8px 12px 8px 40px;
-  background-color: $input-bc;
-  font-size: 14px;
-  border: 1px solid $input-border;
-  border-radius: 8px;
-  outline: none;
-  transition: all 0.2s;
-}
-
-.search-input:focus {
-  border-color: $input-border-focus;
-  caret-color: $input-border-focus;
-}
-
-.search-input::placeholder {
-  color: $input-placeholder;
+    &::placeholder {
+      color: $input-placeholder;
+    }
+  }
+  
+  .clearSearchBtn {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: $input-border-focus;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
 }
 
 .navigate {
@@ -132,7 +149,7 @@
     gap: 24px;
   }
 
-  .search-box {
+  .searchBox {
     width: 296px;
   }
 
@@ -145,7 +162,7 @@
   }
 
 
-  .search-box {
+  .searchBox {
     width: 224px;
   }
 }

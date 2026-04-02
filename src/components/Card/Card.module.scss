@@ -65,22 +65,37 @@
   background: $accent-color;
 }
 
+.defaultInfo,
+.hoverInfo {
+  transition: all 0.3s ease-in-out;
+  grid-row: 1;
+}
+
+.info {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
 .defaultInfo {
-  transition: opacity 0.3s ease;
+  grid-area: 1/1;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .hoverInfo {
-  display: none;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  grid-area: 1/1;
+  transform: translateX(-100%);
+  opacity: 0;
 }
 
-.card:hover .defaultInfo {
-  display: none;
+.info:hover .defaultInfo {
+  transform: translateY(100%);
+  opacity: 0;
 }
 
-.card:hover .hoverInfo {
-  display: inline;
+.info:hover .hoverInfo {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .title {
