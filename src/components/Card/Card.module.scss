@@ -88,12 +88,12 @@
   opacity: 0;
 }
 
-.info:hover .defaultInfo {
+.card:hover .defaultInfo {
   transform: translateY(100%);
   opacity: 0;
 }
 
-.info:hover .hoverInfo {
+.card:hover .hoverInfo {
   transform: translateX(0);
   opacity: 1;
 }
