@@ -6,6 +6,19 @@ import { PaintingsWithDetails } from '@/types';
 import { getPaintingsWithDetails } from '@/services/api';
 import styles from './Home.module.scss';
 import SideMenu from '@/components/SideMenu/SideMenu';
+import darkLogo from '@/assets/dark-logo.svg';
+import lightLogo from '@/assets/light-logo.svg';
+
+import darkMenu from '@/assets/dark-menu.svg';
+import lightMenu from '@/assets/light-menu.svg';
+
+import darkSearch from '@/assets/dark-search.svg';
+import lightSearch from '@/assets/light-search.svg';
+
+import darkSwitch from '@/assets/dark-switch.svg';
+import lightSwitch from '@/assets/light-switch.svg';
+
+
 
 const ITEMS_PER_PAGE = 6;
 
@@ -129,15 +142,15 @@ export const Home: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.headerCont}>
           {theme === 'light' ? (
-            <img src="./light-logo.svg" alt="logo" className={styles.leftImg} />
+            <img src={lightLogo} alt="logo" className={styles.leftImg} />
           ) : (
-            <img src="./dark-logo.svg" alt="logo" className={styles.leftImg} />
+            <img src={darkLogo} alt="logo" className={styles.leftImg} />
           )}
           <button className={styles.toggle} onClick={handleToggle}>
             {theme === 'light' ? (
-              <img src="./light-switch.svg" alt="switch" className={styles.rightImg} />
+              <img src={lightSwitch} alt="switch" className={styles.rightImg} />
             ) : (
-              <img src="./dark-switch.svg" alt="switch" className={styles.rightImg} />
+              <img src={darkSwitch} alt="switch" className={styles.rightImg} />
             )}
           </button>
         </div>
@@ -146,9 +159,9 @@ export const Home: React.FC = () => {
         <div className={styles.navigate}>
           <div className={styles.searchBox}>
             {theme === 'light' ? (
-              <img src="./light-search.svg" alt="search" className={styles.searchIcon} />
+              <img src={lightSearch} alt="search" className={styles.searchIcon} />
             ) : (
-              <img src="./dark-search.svg" alt="search" className={styles.searchIcon} />
+              <img src={darkSearch} alt="search" className={styles.searchIcon} />
             )}
             <input
               type="text"
@@ -166,9 +179,9 @@ export const Home: React.FC = () => {
           </div>
           <button className={styles.toggle} onClick={() => setIsMenuOpen(true)}>
             {theme === 'light' ? (
-              <img src="./light-menu.svg" alt="menu" className={styles.menu} />
+              <img src={lightMenu} alt="menu" className={styles.menu} />
             ) : (
-              <img src="./dark-menu.svg" alt="menu" className={styles.menu} />
+              <img src={darkMenu} alt="menu" className={styles.menu} />
             )}
           </button>
         </div>
