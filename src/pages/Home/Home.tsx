@@ -129,15 +129,15 @@ export const Home: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.headerCont}>
           {theme === 'light' ? (
-            <img src="/light-logo.svg" alt="logo" className={styles.leftImg} />
+            <img src="./light-logo.svg" alt="logo" className={styles.leftImg} />
           ) : (
-            <img src="/dark-logo.svg" alt="logo" className={styles.leftImg} />
+            <img src="./dark-logo.svg" alt="logo" className={styles.leftImg} />
           )}
           <button className={styles.toggle} onClick={handleToggle}>
             {theme === 'light' ? (
-              <img src="/light-switch.svg" alt="switch" className={styles.rightImg} />
+              <img src="./light-switch.svg" alt="switch" className={styles.rightImg} />
             ) : (
-              <img src="/dark-switch.svg" alt="switch" className={styles.rightImg} />
+              <img src="./dark-switch.svg" alt="switch" className={styles.rightImg} />
             )}
           </button>
         </div>
@@ -146,9 +146,9 @@ export const Home: React.FC = () => {
         <div className={styles.navigate}>
           <div className={styles.searchBox}>
             {theme === 'light' ? (
-              <img src="/light-search.svg" alt="search" className={styles.searchIcon} />
+              <img src="./light-search.svg" alt="search" className={styles.searchIcon} />
             ) : (
-              <img src="/dark-search.svg" alt="search" className={styles.searchIcon} />
+              <img src="./dark-search.svg" alt="search" className={styles.searchIcon} />
             )}
             <input
               type="text"
@@ -166,9 +166,9 @@ export const Home: React.FC = () => {
           </div>
           <button className={styles.toggle} onClick={() => setIsMenuOpen(true)}>
             {theme === 'light' ? (
-              <img src="/light-menu.svg" alt="menu" className={styles.menu} />
+              <img src="./light-menu.svg" alt="menu" className={styles.menu} />
             ) : (
-              <img src="/dark-menu.svg" alt="menu" className={styles.menu} />
+              <img src="./dark-menu.svg" alt="menu" className={styles.menu} />
             )}
           </button>
         </div>
